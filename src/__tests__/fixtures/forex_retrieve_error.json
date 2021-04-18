@@ -1,0 +1,6 @@
+{
+  "object": "error",
+  "location": "https://www.omise.co/api-errors#bad-request",
+  "code": "bad_request",
+  "message": "currency is not currently supported"
+}

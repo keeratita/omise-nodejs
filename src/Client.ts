@@ -1,6 +1,7 @@
+import axios from 'axios';
+import { AxiosRequestConfig, AxiosResponse, AxiosPromise } from 'axios';
 import { OmiseError } from './models/Error';
 import FormData from 'form-data';
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import qs from 'qs';
 
 export interface Config {
@@ -16,16 +17,13 @@ export abstract class Client {
 
   protected abstract getKey(): string;
 
-  protected instanceOf<T = any>(object: any): object is AxiosResponse<T> {
-    return 'data' in object;
-  }
-
-  protected async request<T = any>(endpoint: string, config: AxiosRequestConfig): Promise<T | OmiseError> {
+  protected async getRequest<T>(request: AxiosPromise<any>): Promise<T | OmiseError> {
     try {
-      return (await axios(endpoint, config)).data as T;
+      const response = await request;
+      return response?.data as T;
     } catch (error) {
-      if (this.instanceOf<OmiseError>(error.response)) {
-        return error.response.data as OmiseError;
+      if (error?.data?.object === 'error') {
+        return error.data as OmiseError;
       }
       throw error;
     }
@@ -37,11 +35,11 @@ export abstract class Client {
     apiKey?: string,
     omiseVersion?: string,
   ): Promise<T | OmiseError> {
-    return this.request<T>(endpoint, {
-      ...this.buildConfigure({ apiKey, omiseVersion }),
-      data,
-      method: 'POST',
-    });
+    return this.getRequest<T>(
+      axios.post(endpoint, data, {
+        ...this.buildConfigure({ apiKey, omiseVersion }),
+      }),
+    );
   }
 
   protected async get<T>(
@@ -50,14 +48,15 @@ export abstract class Client {
     apiKey?: string,
     omiseVersion?: string,
   ): Promise<T | OmiseError> {
-    return this.request<T>(endpoint, {
-      ...this.buildConfigure({ apiKey, omiseVersion }),
-      params,
-      paramsSerializer: (_params) => {
-        return qs.stringify(_params);
-      },
-      method: 'GET',
-    });
+    return this.getRequest<T>(
+      axios.get(endpoint, {
+        ...this.buildConfigure({ apiKey, omiseVersion }),
+        params,
+        paramsSerializer: (_params) => {
+          return qs.stringify(_params);
+        },
+      }),
+    );
   }
 
   protected async patch<T>(
@@ -66,11 +65,11 @@ export abstract class Client {
     apiKey?: string,
     omiseVersion?: string,
   ): Promise<T | OmiseError> {
-    return this.request<T>(endpoint, {
-      ...this.buildConfigure({ apiKey, omiseVersion }),
-      data,
-      method: 'PATCH',
-    });
+    return this.getRequest<T>(
+      axios.patch(endpoint, data, {
+        ...this.buildConfigure({ apiKey, omiseVersion }),
+      }),
+    );
   }
 
   protected async put<T>(
@@ -79,11 +78,11 @@ export abstract class Client {
     apiKey?: string,
     omiseVersion?: string,
   ): Promise<T | OmiseError> {
-    return this.request<T>(endpoint, {
-      ...this.buildConfigure({ apiKey, omiseVersion }),
-      data,
-      method: 'PUT',
-    });
+    return this.getRequest<T>(
+      axios.put(endpoint, data, {
+        ...this.buildConfigure({ apiKey, omiseVersion }),
+      }),
+    );
   }
 
   protected async delete<T>(
@@ -92,11 +91,12 @@ export abstract class Client {
     apiKey?: string,
     omiseVersion?: string,
   ): Promise<T | OmiseError> {
-    return this.request<T>(endpoint, {
-      ...this.buildConfigure({ apiKey, omiseVersion }),
-      data,
-      method: 'DELETE',
-    });
+    return this.getRequest<T>(
+      axios.delete(endpoint, {
+        ...this.buildConfigure({ apiKey, omiseVersion }),
+        data,
+      }),
+    );
   }
 
   protected async fileUpload<T>(
@@ -114,11 +114,11 @@ export abstract class Client {
       }
     }
 
-    return this.request<T>(endpoint, {
-      ...this.buildConfigure({ apiKey, omiseVersion, headers: form.getHeaders() }),
-      data: form,
-      method: 'POST',
-    });
+    return this.getRequest<T>(
+      axios.post(endpoint, form, {
+        ...this.buildConfigure({ apiKey, omiseVersion, headers: form.getHeaders() }),
+      }),
+    );
   }
 
   private buildConfigure(options: {

@@ -3,7 +3,7 @@ import { RecipientType } from './Recipient';
 import { SourceType } from './Source';
 
 export interface PaginationParams {
-  expand?: boolean | 0 | 1;
+  expand?: boolean;
   from?: string;
   to?: string;
   offset?: number;
@@ -23,7 +23,7 @@ export interface List<T = any> {
 
 export interface ISearch {
   scope: string;
-  expand?: boolean | 0 | 1;
+  expand?: boolean;
   filters?: { [key: string]: any };
   query?: string;
 }

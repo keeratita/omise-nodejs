@@ -1,0 +1,38 @@
+{
+  "object": "account",
+  "id": "account_test_xxxx",
+  "team": "acct_xxxx",
+  "livemode": false,
+  "location": "/account",
+  "country": "TH",
+  "currency": "THB",
+  "email": "keerati.tansawatcharoen@gmail.com",
+  "created_at": "2020-04-20T06:55:53Z",
+  "supported_currencies": [
+      "THB",
+      "JPY",
+      "USD",
+      "EUR",
+      "GBP",
+      "SGD",
+      "AUD",
+      "CHF",
+      "CNY",
+      "DKK",
+      "HKD"
+  ],
+  "api_version": "2019-05-29",
+  "auto_activate_recipients": false,
+  "chain_enabled": false,
+  "zero_interest_installments": false,
+  "chain_return_uri": "https://dashboard.omise.co/test/settings",
+  "webhook_uri": "",
+  "metadata_export_keys": {
+      "charge": [
+          "id"
+      ],
+      "transfer": [],
+      "refund": [],
+      "dispute": []
+  }
+}

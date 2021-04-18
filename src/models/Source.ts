@@ -84,9 +84,12 @@ export interface Source {
 
 export type SourceResponse = Source | OmiseError;
 
-export interface NewSourceRequest {
+export interface NewSourceRequest extends NewChargeSourceRequest {
   amount: number;
   currency: string;
+}
+
+export interface NewChargeSourceRequest {
   type: SourceType;
   barcode?: string;
   email?: string;

@@ -18,7 +18,7 @@ import { SourceResource } from './SourceResource';
 import { SearchResource } from './SearchResource';
 import { TransactionResource } from './TransactionResource';
 
-export default class OmiseClient {
+export class OmiseClient {
   account: AccountResource;
   balance: BalanceResource;
   capability: CapabilityResource;

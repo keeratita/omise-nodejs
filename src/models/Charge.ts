@@ -5,7 +5,7 @@ import { Refund } from './Refund';
 import { OmiseError } from './Error';
 import { Dispute } from './Dispute';
 import { Customer } from './Customer';
-import { NewSourceRequest, Source } from './Source';
+import { NewChargeSourceRequest, Source } from './Source';
 import { Card } from './Card';
 import { List } from './common';
 
@@ -99,11 +99,11 @@ export interface NewChargeRequest {
   card?: string;
   customer?: string;
   return_uri?: string;
-  source?: string | NewSourceRequest;
+  source?: string | NewChargeSourceRequest;
   description?: string;
   ip?: string;
   capture?: boolean;
-  expires_at: string;
+  expires_at?: string;
   metadata?: { [key: string]: any };
   platform_fee?: {
     fixed?: number;
