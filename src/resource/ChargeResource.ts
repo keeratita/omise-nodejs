@@ -42,7 +42,7 @@ export class ChargeResource extends Client {
     return this.get<EventList>(`${id}/events`, params);
   }
 
-  async update(id: string, params?: UpdateChargeRequest): Promise<ChargeResponse> {
+  async update(id: string, params: UpdateChargeRequest): Promise<ChargeResponse> {
     return this.patch<Charge>(id, params);
   }
 

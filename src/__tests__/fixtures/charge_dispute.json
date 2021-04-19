@@ -1,0 +1,47 @@
+{
+  "object": "dispute",
+  "id": "dspt_test_5nk1hff1s5xr82p0q0w",
+  "livemode": false,
+  "location": "/disputes/dspt_test_5nk1hff1s5xr82p0q0w",
+  "currency": "THB",
+  "amount": 10000,
+  "funding_amount": 10000,
+  "funding_currency": "THB",
+  "metadata": {},
+  "charge": "chrg_test_5nk0ssyef8lsx3lpqv5",
+  "documents": {
+      "object": "list",
+      "data": [
+
+      ],
+      "limit": 20,
+      "offset": 0,
+      "total": 1,
+      "location": "/disputes/dspt_test_5nk1hff1s5xr82p0q0w/documents",
+      "order": "chronological",
+      "from": "1970-01-01T00:00:00Z",
+      "to": "2021-04-19T00:46:11Z"
+  },
+  "transactions": [
+      {
+          "object": "transaction",
+          "id": "trxn_test_5nk1hffa8o8k5weugg5",
+          "livemode": false,
+          "currency": "THB",
+          "amount": 10000,
+          "location": "/transactions/trxn_test_5nk1hffa8o8k5weugg5",
+          "direction": "debit",
+          "key": "dispute.started.debit",
+          "origin": "dspt_test_5nk1hff1s5xr82p0q0w",
+          "transferable_at": "2021-04-18T11:05:36Z",
+          "created_at": "2021-04-18T11:05:36Z"
+      }
+  ],
+  "admin_message": null,
+  "message": null,
+  "reason_code": "goods_or_services_not_provided",
+  "reason_message": "Services not provided or Merchandise not received",
+  "status": "open",
+  "closed_at": null,
+  "created_at": "2021-04-18T11:05:36Z"
+}
