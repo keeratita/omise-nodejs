@@ -8,7 +8,7 @@ afterEach(() => {
 describe('Capability API', () => {
   it('Retrieve', () => {
     const responseData = { data: require('./fixtures/capabilities_retrieve.json') };
-    mockAxios.get.mockReturnValue(Promise.resolve(responseData));
+    mockAxios.get.mockResolvedValue(responseData);
 
     const responsePromise = OmiseClient.capability.retrieve();
     expect(responsePromise).resolves.toEqual(responseData.data);

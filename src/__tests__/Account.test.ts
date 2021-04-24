@@ -1,4 +1,3 @@
-import { AccountResponse } from './../models/Account';
 import mockAxios from './mockAxios';
 import OmiseClient from './OmiseClient';
 

@@ -43,8 +43,8 @@ export class CustomerResource extends Client {
     return this.delete<Customer>(id);
   }
 
-  async listSchedules(id: string, params?: PaginationParams): Promise<ScheduleListResponse> {
-    return this.get<ScheduleList>(`${id}/schedules`, params);
+  async listSchedules(customerId: string, params?: PaginationParams): Promise<ScheduleListResponse> {
+    return this.get<ScheduleList>(`${customerId}/schedules`, params);
   }
 
   cardsOf(customerId: string): CardResource {

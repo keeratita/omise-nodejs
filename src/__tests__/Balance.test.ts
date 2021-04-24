@@ -8,7 +8,7 @@ afterEach(() => {
 describe('Balance API', () => {
   it('Retrieve', () => {
     const responseData = { data: require('./fixtures/balance_retrieve.json') };
-    mockAxios.get.mockReturnValue(Promise.resolve(responseData));
+    mockAxios.get.mockResolvedValue(responseData);
 
     const responsePromise = OmiseClient.balance.retrieve();
     expect(responsePromise).resolves.toEqual(responseData.data);

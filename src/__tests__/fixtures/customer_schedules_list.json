@@ -1,0 +1,69 @@
+{
+  "object": "list",
+  "data": [
+    {
+      "object": "schedule",
+      "id": "schd_test_5nk0ssxsjf0iqdahbyj",
+      "deleted": true,
+      "livemode": false,
+      "location": "/schedules/schd_test_5nk0ssxsjf0iqdahbyj",
+      "every": 1,
+      "occurrences": {
+          "object": "list",
+          "data": [
+              {
+                  "object": "occurrence",
+                  "livemode": false,
+                  "location": "/occurrences/occu_test_5nk0ssxt1dd079ts6pn",
+                  "id": "occu_test_5nk0ssxt1dd079ts6pn",
+                  "result": "chrg_test_5nk0ssyef8lsx3lpqv5",
+                  "schedule": "schd_test_5nk0ssxsjf0iqdahbyj",
+                  "message": null,
+                  "status": "successful",
+                  "processed_at": "2021-04-18T09:55:39Z",
+                  "created_at": "2021-04-18T09:55:39Z",
+                  "scheduled_on": "2021-04-18",
+                  "retry_on": null
+              }
+          ],
+          "limit": 20,
+          "offset": 0,
+          "total": 1,
+          "location": "/schedules/schd_test_5nk0ssxsjf0iqdahbyj/occurrences",
+          "order": "chronological",
+          "from": "1970-01-01T00:00:00Z",
+          "to": "2021-04-18T18:38:00Z"
+      },
+      "on": {},
+      "in_words": "Every 1 day(s)",
+      "period": "day",
+      "status": "deleted",
+      "active": false,
+      "charge": {
+          "object": "scheduled_charge",
+          "id": "rchg_test_5nk0ssxrq0gbrdf67j7",
+          "livemode": false,
+          "currency": "THB",
+          "amount": 10000,
+          "default_card": true,
+          "card": "card_test_5m922dndm13zd2reh84",
+          "customer": "cust_test_5m922s0sv3dxsjzneu1",
+          "description": "",
+          "metadata": {},
+          "created_at": "2021-04-18T09:55:39Z"
+      },
+      "next_occurrences_on": [],
+      "ended_at": "2021-04-18T10:03:15Z",
+      "start_on": "2021-04-18",
+      "end_on": "2022-04-18",
+      "created_at": "2021-04-18T09:55:39Z"
+    }
+  ],
+  "limit": 20,
+  "offset": 0,
+  "total": 1,
+  "location": "/customers/cust_test_5m922s0sv3dxsjzneu1/schedules",
+  "order": "chronological",
+  "from": "1970-01-01T00:00:00Z",
+  "to": "2021-04-18T18:38:00Z"
+}

@@ -8,7 +8,7 @@ afterEach(() => {
 describe('Forex API', () => {
   it('Retrieve', () => {
     const responseData = { data: require('./fixtures/forex_retrieve.json') };
-    mockAxios.get.mockReturnValue(Promise.resolve(responseData));
+    mockAxios.get.mockResolvedValue(responseData);
 
     const responsePromise = OmiseClient.forex.retrieve('usd');
     expect(responsePromise).resolves.toEqual(responseData.data);

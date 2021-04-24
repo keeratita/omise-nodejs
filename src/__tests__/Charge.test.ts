@@ -9,7 +9,7 @@ afterEach(() => {
 describe('Charge API', () => {
   it('Retrieve', async () => {
     const responseData = { data: require('./fixtures/charge_retrieve.json') };
-    mockAxios.get.mockReturnValue(Promise.resolve(responseData));
+    mockAxios.get.mockResolvedValue(responseData);
 
     const chargePromise = OmiseClient.charge.retrieve('chrg_test_5nk0ssyef8lsx3lpqv5');
     await expect(chargePromise).resolves.toEqual(responseData.data);
@@ -24,7 +24,7 @@ describe('Charge API', () => {
 
   it('Create with customer', async () => {
     const responseData = { data: require('./fixtures/charge_retrieve.json') };
-    mockAxios.post.mockReturnValue(Promise.resolve(responseData));
+    mockAxios.post.mockResolvedValue(responseData);
 
     const requestData = {
       amount: 2000,
@@ -46,7 +46,7 @@ describe('Charge API', () => {
 
   it('Create with source', async () => {
     const responseData = { data: require('./fixtures/charge_create_source.json') };
-    mockAxios.post.mockReturnValue(Promise.resolve(responseData));
+    mockAxios.post.mockResolvedValue(responseData);
 
     const requestData: NewChargeRequest = {
       amount: 2000,
@@ -70,7 +70,7 @@ describe('Charge API', () => {
 
   it('List', async () => {
     const responseData = { data: require('./fixtures/charge_list_expand.json') };
-    mockAxios.get.mockReturnValue(Promise.resolve(responseData));
+    mockAxios.get.mockResolvedValue(responseData);
 
     const params = {
       offset: 0,
@@ -91,7 +91,7 @@ describe('Charge API', () => {
 
   it('List events of charge', async () => {
     const responseData = { data: require('./fixtures/charge_events.json') };
-    mockAxios.get.mockReturnValue(Promise.resolve(responseData));
+    mockAxios.get.mockResolvedValue(responseData);
 
     const chargePromise = OmiseClient.charge.listEvents('chrg_test_5nk0ssyef8lsx3lpqv5');
     await expect(chargePromise).resolves.toEqual(responseData.data);
@@ -106,7 +106,7 @@ describe('Charge API', () => {
 
   it('Capture a charge', async () => {
     const responseData = { data: require('./fixtures/charge_retrieve.json') };
-    mockAxios.post.mockReturnValue(Promise.resolve(responseData));
+    mockAxios.post.mockResolvedValue(responseData);
 
     const chargePromise = OmiseClient.charge.capture('chrg_test_5nk0ssyef8lsx3lpqv5');
     await expect(chargePromise).resolves.toEqual(responseData.data);
@@ -122,7 +122,7 @@ describe('Charge API', () => {
 
   it('Update a charge', async () => {
     const responseData = { data: require('./fixtures/charge_retrieve.json') };
-    mockAxios.patch.mockReturnValue(Promise.resolve(responseData));
+    mockAxios.patch.mockResolvedValue(responseData);
 
     const data: UpdateChargeRequest = {
       description: 'update description',
@@ -141,7 +141,7 @@ describe('Charge API', () => {
 
   it('Expire a charge', async () => {
     const responseData = { data: require('./fixtures/charge_retrieve.json') };
-    mockAxios.post.mockReturnValue(Promise.resolve(responseData));
+    mockAxios.post.mockResolvedValue(responseData);
 
     const chargePromise = OmiseClient.charge.expire('chrg_test_5nk0ssyef8lsx3lpqv5');
     await expect(chargePromise).resolves.toEqual(responseData.data);
@@ -157,7 +157,7 @@ describe('Charge API', () => {
 
   it('Reverse a charge', async () => {
     const responseData = { data: require('./fixtures/charge_retrieve.json') };
-    mockAxios.post.mockReturnValue(Promise.resolve(responseData));
+    mockAxios.post.mockResolvedValue(responseData);
 
     const chargePromise = OmiseClient.charge.reverse('chrg_test_5nk0ssyef8lsx3lpqv5');
     await expect(chargePromise).resolves.toEqual(responseData.data);
@@ -173,7 +173,7 @@ describe('Charge API', () => {
 
   it('Mark a charge as failed', async () => {
     const responseData = { data: require('./fixtures/charge_retrieve.json') };
-    mockAxios.post.mockReturnValue(Promise.resolve(responseData));
+    mockAxios.post.mockResolvedValue(responseData);
 
     const chargePromise = OmiseClient.charge.markAsFailed('chrg_test_5nk0ssyef8lsx3lpqv5');
     await expect(chargePromise).resolves.toEqual(responseData.data);
@@ -189,7 +189,7 @@ describe('Charge API', () => {
 
   it('Mark a charge as paid', async () => {
     const responseData = { data: require('./fixtures/charge_retrieve.json') };
-    mockAxios.post.mockReturnValue(Promise.resolve(responseData));
+    mockAxios.post.mockResolvedValue(responseData);
 
     const chargePromise = OmiseClient.charge.markAsPaid('chrg_test_5nk0ssyef8lsx3lpqv5');
     await expect(chargePromise).resolves.toEqual(responseData.data);
@@ -205,7 +205,7 @@ describe('Charge API', () => {
 
   it('List charge schedules', async () => {
     const responseData = { data: require('./fixtures/charge_schedules.json') };
-    mockAxios.get.mockReturnValue(Promise.resolve(responseData));
+    mockAxios.get.mockResolvedValue(responseData);
 
     const params: PaginationParams = {
       order: 'reverse_chronological',
@@ -225,7 +225,7 @@ describe('Charge API', () => {
 
   it('Dispute a charge', async () => {
     const responseData = { data: require('./fixtures/charge_dispute.json') };
-    mockAxios.post.mockReturnValue(Promise.resolve(responseData));
+    mockAxios.post.mockResolvedValue(responseData);
 
     const chargePromise = OmiseClient.charge.dispute('chrg_test_5nk0ssyef8lsx3lpqv5');
     await expect(chargePromise).resolves.toEqual(responseData.data);
