@@ -1,3 +1,6 @@
+import { SearchResource } from './SearchResource';
+import { SearchResponse } from './../models/Search';
+import { TransactionSearch } from './../models/common';
 import {
   TransactionResponse,
   Transaction,
@@ -24,5 +27,9 @@ export class TransactionResource extends Client {
 
   async list(params?: PaginationParams): Promise<TransactionListResponse> {
     return this.get<TransactionList>('', params);
+  }
+
+  async search(params?: TransactionSearch): Promise<SearchResponse> {
+    return new SearchResource(this.config).list({ ...params, scope: 'transaction' });
   }
 }

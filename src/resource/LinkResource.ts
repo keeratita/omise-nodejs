@@ -1,7 +1,9 @@
+import { SearchResponse } from './../models/Search';
 import { ChargeListResponse } from './../models/Charge';
 import { NewLinkRequest } from './../models/Link';
-import { LinkResponse, Link, PaginationParams, LinkListResponse, LinkList } from '../models';
+import { LinkResponse, Link, PaginationParams, LinkListResponse, LinkList, LinkSearch } from '../models';
 import { Client, Config } from '../Client';
+import { SearchResource } from './SearchResource';
 
 export class LinkResource extends Client {
   protected readonly baseURL = 'https://api.omise.co/links';
@@ -32,5 +34,9 @@ export class LinkResource extends Client {
 
   async listCharges(id: string, params?: PaginationParams): Promise<ChargeListResponse> {
     return this.get(`${id}/charges`, params);
+  }
+
+  async search(params: LinkSearch): Promise<SearchResponse> {
+    return new SearchResource(this.config).list({ ...params, scope: 'link' });
   }
 }

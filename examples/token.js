@@ -5,9 +5,8 @@
  * - https://www.omise.co/security-best-practices
  * - https://www.omise.co/security-overview
  *
- * The below example is for someone who would like to use this library on a frontend.
- * If you use this library to create tokens on a server-side and your account is blocked by Omise,
- * It's your fault that you don't read any documents and agreements.
+ * The below example is for someone who would like to use this library on a frontend only.
+ * If you use this library to create tokens on a server-side and your account might be blocked by Omise,
  *
  *
  * This example doesn't use a real credit card number, It's a test card from Omise document.
@@ -16,8 +15,9 @@
 
 const client = require('./getOmiseClient');
 
-client.token
-  .create({
+async function run() {
+  // Create a token
+  const newToken = await client.token.create({
     card: {
       name: 'John Doe',
       number: '4242 4242 4242 4242',
@@ -25,13 +25,17 @@ client.token
       expiration_year: 2022,
       security_code: '123',
     },
-  })
-  .then((token) => {
-    if (token.object === 'error') {
-      console.error('Got error', token);
-      return;
-    } else {
-      console.log('Token id', token.id);
-    }
-  })
-  .catch((error) => console.error(error));
+  });
+
+  if (newToken.object === 'error') throw newToken;
+
+  console.log('token id', newToken.id);
+
+  // Retrieve a token
+  const token = await client.token.retrieve(newToken.id);
+  if (token.object === 'error') throw token;
+
+  console.log('token', token);
+}
+
+run().catch(console.error);

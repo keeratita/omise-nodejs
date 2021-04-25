@@ -1,3 +1,6 @@
+import { SearchResource } from './SearchResource';
+import { SearchResponse } from './../models/Search';
+import { CustomerSearch } from './../models/common';
 import { CardResource } from './CardResource';
 import {
   CustomerResponse,
@@ -49,5 +52,9 @@ export class CustomerResource extends Client {
 
   cardsOf(customerId: string): CardResource {
     return new CardResource(`${this.baseURL}/${customerId}/cards`, this.config);
+  }
+
+  async search(params: CustomerSearch): Promise<SearchResponse> {
+    return new SearchResource(this.config).list({ ...params, scope: 'customer' });
   }
 }

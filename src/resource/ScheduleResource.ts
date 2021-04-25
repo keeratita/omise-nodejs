@@ -1,8 +1,18 @@
+import { NewScheduleRequest } from './../models/Schedule';
+import { SearchResource } from './SearchResource';
+import { ChargeScheduleSearch, TransferScheduleSearch } from './../models/common';
 import { RecipientResource } from './RecipientResource';
 import { OccurrenceList, OccurrenceListResponse } from './../models/Occurrence';
 import { CustomerResource } from './CustomerResource';
 import { ChargeResource } from './ChargeResource';
-import { Schedule, ScheduleResponse, ScheduleList, ScheduleListResponse, PaginationParams } from '../models';
+import {
+  Schedule,
+  ScheduleResponse,
+  ScheduleList,
+  ScheduleListResponse,
+  PaginationParams,
+  SearchResponse,
+} from '../models';
 import { Client, Config } from '../Client';
 import { TransferResource } from './TransferResource';
 
@@ -15,6 +25,14 @@ export class ScheduleResource extends Client {
 
   protected getKey(): string {
     return this.config.secretKey;
+  }
+
+  async create(data: NewScheduleRequest): Promise<ScheduleResponse> {
+    return this.post<Schedule>('', data);
+  }
+
+  async destroy(id: string): Promise<ScheduleResponse> {
+    return this.delete<Schedule>(id);
   }
 
   async list(params?: PaginationParams): Promise<ScheduleListResponse> {
@@ -43,5 +61,13 @@ export class ScheduleResource extends Client {
 
   async listOccurrences(id: string, params?: PaginationParams): Promise<OccurrenceListResponse> {
     return this.get<OccurrenceList>(`${id}/occurrences`, params);
+  }
+
+  async searchChargeSchedules(params: ChargeScheduleSearch): Promise<SearchResponse> {
+    return new SearchResource(this.config).list({ ...params, scope: 'charge_schedule' });
+  }
+
+  async searchTransferSchedules(params: TransferScheduleSearch): Promise<SearchResponse> {
+    return new SearchResource(this.config).list({ ...params, scope: 'transfer_schedule' });
   }
 }

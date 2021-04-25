@@ -1,3 +1,4 @@
+import { TransferSearch } from './../models/common';
 import { ScheduleList, ScheduleListResponse } from './../models/Schedule';
 import { UpdateTransferRequest } from './../models/Transfer';
 import {
@@ -7,8 +8,10 @@ import {
   PaginationParams,
   TransferListResponse,
   TransferList,
+  SearchResponse,
 } from '../models';
 import { Client, Config } from '../Client';
+import { SearchResource } from './SearchResource';
 
 export class TransferResource extends Client {
   protected readonly baseURL = 'https://api.omise.co/transfers';
@@ -51,5 +54,9 @@ export class TransferResource extends Client {
 
   async listTransferSchedules(params?: PaginationParams): Promise<ScheduleListResponse> {
     return this.get<ScheduleList>('schedules', params);
+  }
+
+  async search(params: TransferSearch): Promise<SearchResponse> {
+    return new SearchResource(this.config).list({ ...params, scope: 'transfer' });
   }
 }

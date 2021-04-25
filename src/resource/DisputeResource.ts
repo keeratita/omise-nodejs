@@ -1,3 +1,5 @@
+import { SearchResource } from './SearchResource';
+import { DisputeSearch } from './../models/common';
 import {
   DisputeResponse,
   Dispute,
@@ -5,6 +7,7 @@ import {
   DisputeListResponse,
   PaginationParams,
   UpdateDisputeRequest,
+  SearchResponse,
 } from '../models';
 import { ChargeResource } from './ChargeResource';
 import { DocumentResource } from './DocumentResource';
@@ -59,5 +62,9 @@ export class DisputeResource extends Client {
 
   documentsOf(disputeId: string): DocumentResource {
     return new DocumentResource(`${this.baseURL}/${disputeId}/documents`, this.config);
+  }
+
+  async search(params: DisputeSearch): Promise<SearchResponse> {
+    return new SearchResource(this.config).list({ ...params, scope: 'dispute' });
   }
 }

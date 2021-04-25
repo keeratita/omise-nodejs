@@ -1,3 +1,5 @@
+import { SearchResource } from './SearchResource';
+import { RecipientSearch } from './../models/common';
 import {
   RecipientResponse,
   Recipient,
@@ -8,6 +10,7 @@ import {
   UpdateRecipientRequest,
   PaginationParams,
   ScheduleList,
+  SearchResponse,
 } from '../models';
 import { Client, Config } from '../Client';
 
@@ -48,5 +51,9 @@ export class RecipientResource extends Client {
 
   async listSchedules(id: string, params?: PaginationParams): Promise<ScheduleListResponse> {
     return this.get<ScheduleList>(id, params);
+  }
+
+  async search(params: RecipientSearch): Promise<SearchResponse> {
+    return new SearchResource(this.config).list({ ...params, scope: 'recipient' });
   }
 }

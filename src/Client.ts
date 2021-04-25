@@ -5,7 +5,7 @@ import FormData from 'form-data';
 import qs from 'qs';
 
 export interface Config {
-  omiseVersion?: '2014-07-27' | '2015-11-17' | '2017-11-02' | '2019-05-29';
+  omiseVersion?: '2019-05-29'; // only supports API version 2019-05-29 for now
   publicKey: string;
   secretKey: string;
 }
@@ -24,6 +24,10 @@ export abstract class Client {
     } catch (error) {
       if (error?.data?.object === 'error') {
         return error.data as OmiseError;
+      }
+
+      if (error?.response?.data?.object === 'error') {
+        return error.response.data as OmiseError;
       }
       throw error;
     }

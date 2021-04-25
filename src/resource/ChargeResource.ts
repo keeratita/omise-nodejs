@@ -1,3 +1,6 @@
+import { RefundList, RefundListResponse } from './../models/Refund';
+import { SearchResource } from './SearchResource';
+import { ChargeSearch } from './../models/common';
 import {
   ChargeResponse,
   Charge,
@@ -12,6 +15,9 @@ import {
   EventListResponse,
   ScheduleListResponse,
   ScheduleList,
+  SearchResponse,
+  RefundResponse,
+  Refund,
 } from '../models';
 import { Client, Config } from '../Client';
 
@@ -72,5 +78,21 @@ export class ChargeResource extends Client {
 
   async listChargeSchedules(params?: PaginationParams): Promise<ScheduleListResponse> {
     return this.get<ScheduleList>('schedules', params);
+  }
+
+  async search(params: ChargeSearch): Promise<SearchResponse> {
+    return new SearchResource(this.config).list({ ...params, scope: 'charge' });
+  }
+
+  async refund(id: string): Promise<RefundResponse> {
+    return this.post<Refund>(`${id}/refunds`);
+  }
+
+  async retrieveRefund(chargeId: string, refundId: string): Promise<RefundResponse> {
+    return this.post<Refund>(`${chargeId}/refunds/${refundId}`);
+  }
+
+  async listRefunds(id: string, params?: PaginationParams): Promise<RefundListResponse> {
+    return this.get<RefundList>(`${id}/refunds`, params);
   }
 }
