@@ -49,6 +49,7 @@ export type SourceType =
   | 'promptpay'
   | 'qr_code_upi'
   | 'truemoney'
+  | 'rabbit_linepay'
   | InstallmentType
   | InternetBankingType;
 
