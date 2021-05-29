@@ -1,6 +1,6 @@
 {
   "name": "omise-nodejs",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Unofficial Omise API client for Node.js",
   "homepage": "https://github.com/keeratita/omise-nodejs",
   "repository": {
