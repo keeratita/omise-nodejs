@@ -2,7 +2,9 @@ import { ChainResponse, Chain, ChainList, ChainListResponse, PaginationParams } 
 import { Client, Config } from '../Client';
 
 export class ChainResource extends Client {
-  protected readonly baseURL = 'https://api.omise.co/chains';
+  protected get baseURL() {
+    return `${this.apiBaseUrl}/chains`;
+  }
 
   constructor(config: Config) {
     super(config);

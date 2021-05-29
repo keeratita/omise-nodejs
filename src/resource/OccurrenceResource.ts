@@ -3,7 +3,10 @@ import { OccurrenceResponse, Occurrence, OccurrenceListResponse, PaginationParam
 import { Client, Config } from '../Client';
 
 export class OccurrenceResource extends Client {
-  protected readonly baseURL = 'https://api.omise.co/occurrences';
+  protected get baseURL() {
+    return `${this.apiBaseUrl}/occurrences`;
+  }
+
   constructor(config: Config) {
     super(config);
   }

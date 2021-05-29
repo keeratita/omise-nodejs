@@ -2,7 +2,9 @@ import { TokenResponse, Token, NewTokenRequest } from '../models';
 import { Client, Config } from '../Client';
 
 export class TokenResource extends Client {
-  protected readonly baseURL = 'https://vault.omise.co/tokens';
+  protected get baseURL() {
+    return `${this.vaultBaseUrl}/tokens`;
+  }
 
   constructor(config: Config) {
     super(config);

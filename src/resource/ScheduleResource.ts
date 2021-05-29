@@ -17,7 +17,9 @@ import { Client, Config } from '../Client';
 import { TransferResource } from './TransferResource';
 
 export class ScheduleResource extends Client {
-  protected readonly baseURL = 'https://api.omise.co/schedules';
+  protected get baseURL() {
+    return `${this.apiBaseUrl}/schedules`;
+  }
 
   constructor(config: Config) {
     super(config);

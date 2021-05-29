@@ -16,7 +16,9 @@ import {
 import { Client, Config } from '../Client';
 
 export class CustomerResource extends Client {
-  protected readonly baseURL = 'https://api.omise.co/customers';
+  protected get baseURL() {
+    return `${this.apiBaseUrl}/customers`;
+  }
 
   constructor(config: Config) {
     super(config);

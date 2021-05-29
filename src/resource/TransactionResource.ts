@@ -11,7 +11,9 @@ import {
 import { Client, Config } from '../Client';
 
 export class TransactionResource extends Client {
-  protected readonly baseURL = 'https://api.omise.co/transactions';
+  protected get baseURL() {
+    return `${this.apiBaseUrl}/transactions`;
+  }
 
   constructor(config: Config) {
     super(config);

@@ -4,14 +4,24 @@ import { OmiseError } from './models/Error';
 import FormData from 'form-data';
 import qs from 'qs';
 
+const VERSION = '0.0.3';
+
 export interface Config {
   omiseVersion?: '2019-05-29'; // only supports API version 2019-05-29 for now
   publicKey: string;
   secretKey: string;
+  apiBaseUrl?: 'https://api.omise.co' | 'https://api.staging-omise.co';
+  vaultBaseUrl?: 'https://vault.omise.co' | 'https://vault.staging-omise.co';
 }
 
 export abstract class Client {
   protected abstract baseURL: string;
+  protected get apiBaseUrl() {
+    return this.config.apiBaseUrl ? this.config.apiBaseUrl : 'https://api.omise.co';
+  }
+  protected get vaultBaseUrl() {
+    return this.config.vaultBaseUrl ? this.config.vaultBaseUrl : 'https://vault.omise.co';
+  }
 
   constructor(protected config: Config) {}
 
@@ -133,6 +143,7 @@ export abstract class Client {
     return {
       baseURL: this.baseURL,
       headers: {
+        'User-Agent': `omise-nodejs/${VERSION}`,
         'Omise-Version': options?.omiseVersion || this.config?.omiseVersion || '2019-05-29',
         ...options?.headers,
       },

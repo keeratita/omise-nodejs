@@ -2,7 +2,9 @@ import { SourceResponse, Source, NewSourceRequest } from '../models';
 import { Client, Config } from '../Client';
 
 export class SourceResource extends Client {
-  protected readonly baseURL = 'https://api.omise.co/sources';
+  protected get baseURL() {
+    return `${this.apiBaseUrl}/sources`;
+  }
 
   constructor(config: Config) {
     super(config);

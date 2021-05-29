@@ -2,7 +2,9 @@ import { Search, SearchRequest, SearchResponse } from '../models';
 import { Client, Config } from '../Client';
 
 export class SearchResource extends Client {
-  protected readonly baseURL = 'https://api.omise.co/search';
+  protected get baseURL() {
+    return `${this.apiBaseUrl}/search`;
+  }
 
   constructor(config: Config) {
     super(config);

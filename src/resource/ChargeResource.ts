@@ -22,7 +22,9 @@ import {
 import { Client, Config } from '../Client';
 
 export class ChargeResource extends Client {
-  protected readonly baseURL = 'https://api.omise.co/charges';
+  protected get baseURL() {
+    return `${this.apiBaseUrl}/charges`;
+  }
 
   constructor(config: Config) {
     super(config);

@@ -29,3 +29,7 @@ export * from './Transaction';
 export * from './Transfer';
 export * from './TransferSchedule';
 export * from './WebhookDelivery';
+//
+export * from './FundAccount';
+export * from './FundSource';
+export * from './FundRequest';
