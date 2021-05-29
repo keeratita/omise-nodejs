@@ -2,7 +2,9 @@ import { CapabilityResponse, Capability } from '../models';
 import { Client, Config } from '../Client';
 
 export class CapabilityResource extends Client {
-  protected readonly baseURL = 'https://api.omise.co/capabilities';
+  protected get baseURL() {
+    return `${this.apiBaseUrl}/capabilities`;
+  }
 
   constructor(config: Config) {
     super(config);

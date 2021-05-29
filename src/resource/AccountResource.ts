@@ -2,7 +2,9 @@ import { AccountResponse, Account, UpdateAccountRequest } from '../models';
 import { Client, Config } from '../Client';
 
 export class AccountResource extends Client {
-  protected readonly baseURL = 'https://api.omise.co/account';
+  protected get baseURL() {
+    return `${this.apiBaseUrl}/account`;
+  }
 
   constructor(config: Config) {
     super(config);

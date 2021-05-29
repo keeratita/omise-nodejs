@@ -6,7 +6,9 @@ import { Client, Config } from '../Client';
 import { SearchResource } from './SearchResource';
 
 export class LinkResource extends Client {
-  protected readonly baseURL = 'https://api.omise.co/links';
+  protected get baseURL() {
+    return `${this.apiBaseUrl}/links`;
+  }
 
   constructor(config: Config) {
     super(config);

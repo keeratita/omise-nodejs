@@ -14,7 +14,9 @@ import { DocumentResource } from './DocumentResource';
 import { Client, Config } from '../Client';
 
 export class DisputeResource extends Client {
-  protected readonly baseURL = 'https://api.omise.co/disputes';
+  protected get baseURL() {
+    return `${this.apiBaseUrl}/disputes`;
+  }
 
   constructor(config: Config) {
     super(config);

@@ -217,6 +217,17 @@ export interface TransactionFilter {
     | 'transfer_waived';
 }
 
+// Fund Account
+
+export interface FundAccountSearch extends ISearch {
+  scope: 'fund_account';
+  filters?: FundAccountFilter;
+}
+
+export interface FundAccountFilter {
+  reference_id?: string;
+}
+
 export type SearchRequest =
   | ChargeSearch
   | ChargeScheduleSearch
@@ -227,4 +238,5 @@ export type SearchRequest =
   | RefundSearch
   | TransferSearch
   | TransferScheduleSearch
-  | TransactionSearch;
+  | TransactionSearch
+  | FundAccountSearch;

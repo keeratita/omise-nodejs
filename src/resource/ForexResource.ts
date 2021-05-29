@@ -2,7 +2,9 @@ import { ForexResponse, Forex } from '../models';
 import { Client, Config } from '../Client';
 
 export class ForexResource extends Client {
-  protected readonly baseURL = 'https://api.omise.co/forex';
+  protected get baseURL() {
+    return `${this.apiBaseUrl}/forex`;
+  }
 
   constructor(config: Config) {
     super(config);

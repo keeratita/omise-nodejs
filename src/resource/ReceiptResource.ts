@@ -2,7 +2,9 @@ import { ReceiptResponse, Receipt, ReceiptList, ReceiptListResponse, PaginationP
 import { Client, Config } from '../Client';
 
 export class ReceiptResource extends Client {
-  protected readonly baseURL = 'https://api.omise.co/receipts';
+  protected get baseURL() {
+    return `${this.apiBaseUrl}/receipts`;
+  }
 
   constructor(config: Config) {
     super(config);

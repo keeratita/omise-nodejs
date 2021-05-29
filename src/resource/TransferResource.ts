@@ -14,7 +14,9 @@ import { Client, Config } from '../Client';
 import { SearchResource } from './SearchResource';
 
 export class TransferResource extends Client {
-  protected readonly baseURL = 'https://api.omise.co/transfers';
+  protected get baseURL() {
+    return `${this.apiBaseUrl}/transfers`;
+  }
 
   constructor(config: Config) {
     super(config);

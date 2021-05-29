@@ -17,12 +17,14 @@ import {
   TransactionFilter,
   TransferFilter,
   TransferScheduleFilter,
+  FundAccountFilter,
 } from './common';
 import { Export } from './Export';
 import { Recipient } from './Recipient';
 import { Refund } from './Refund';
 import { Transfer } from './Transfer';
 import { Transaction } from './Transaction';
+import { FundAccount } from './FundAccount';
 
 export interface GenericSearch<T = any> {
   object: 'search';
@@ -42,7 +44,8 @@ export interface GenericSearch<T = any> {
     | RefundFilter
     | TransferFilter
     | TransferScheduleFilter
-    | TransactionFilter;
+    | TransactionFilter
+    | FundAccountFilter;
   location: string;
   order: 'chronological' | 'reverse_chronological';
   query: string;
@@ -56,7 +59,8 @@ export interface GenericSearch<T = any> {
     | 'refund'
     | 'transfer'
     | 'transfer_schedule'
-    | 'transaction';
+    | 'transaction'
+    | 'fund_account';
 }
 
 export interface ChargeSearchResult extends GenericSearch<Charge> {
@@ -109,6 +113,11 @@ export interface TransactionSearchResult extends GenericSearch<Transaction> {
   scope: 'transaction';
 }
 
+export interface FundAccountSearchResult extends GenericSearch<FundAccount> {
+  filters: FundAccountFilter;
+  scope: 'fund_account';
+}
+
 export type Search =
   | ChargeSearchResult
   | ChargeScheduleSearchResult
@@ -119,6 +128,7 @@ export type Search =
   | RefundSearchResult
   | TransferSearchResult
   | TransferScheduleSearchResult
-  | TransactionSearchResult;
+  | TransactionSearchResult
+  | FundAccountSearchResult;
 
 export type SearchResponse = Search | OmiseError;

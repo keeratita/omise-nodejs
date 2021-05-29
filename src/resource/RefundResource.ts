@@ -5,7 +5,9 @@ import { RefundResponse, Refund, RefundList, RefundListResponse, PaginationParam
 import { Client, Config } from '../Client';
 
 export class RefundResource extends Client {
-  protected readonly baseURL = 'https://api.omise.co/refunds';
+  protected get baseURL() {
+    return `${this.apiBaseUrl}/refunds`;
+  }
 
   constructor(config: Config) {
     super(config);

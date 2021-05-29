@@ -2,7 +2,9 @@ import { EventResponse, Event, PaginationParams, EventListResponse, EventList } 
 import { Client, Config } from '../Client';
 
 export class EventResource extends Client {
-  protected readonly baseURL = 'https://api.omise.co/events';
+  protected get baseURL() {
+    return `${this.apiBaseUrl}/events`;
+  }
 
   constructor(config: Config) {
     super(config);
