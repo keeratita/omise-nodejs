@@ -10,6 +10,9 @@ import {
   FundAccountListResponse,
   FundSourceListResponse,
   FundSourceList,
+  NewFundSourceRequest,
+  FundSourceResponse,
+  FundSource,
 } from '../models';
 import { Client, Config } from '../Client';
 import { SearchResource } from './SearchResource';
@@ -53,5 +56,9 @@ export class FundAccountResource extends Client {
 
   async listFundSources(id: string, params?: PaginationParams): Promise<FundSourceListResponse> {
     return this.get<FundSourceList>(`${id}/fund_sources`, params);
+  }
+
+  async createFundSource(id: string, data: NewFundSourceRequest): Promise<FundSourceResponse> {
+    return this.post<FundSource>(`${id}/fund_sources`, data);
   }
 }

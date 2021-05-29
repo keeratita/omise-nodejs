@@ -1,3 +1,4 @@
+import { FundAccountResource } from './FundAccountResource';
 import {
   UpdateFundSourceRequest,
   ConfirmFundSourceRequest,
@@ -27,8 +28,8 @@ export class FundSourceResource extends Client {
     return this.get<FundSource>(id);
   }
 
-  async create(data: NewFundSourceRequest): Promise<FundSourceResponse> {
-    return this.post<FundSource>('', data);
+  async create(fundAccountId: string, data: NewFundSourceRequest): Promise<FundSourceResponse> {
+    return new FundAccountResource(this.config).createFundSource(fundAccountId, data);
   }
 
   async update(id: string, data: UpdateFundSourceRequest): Promise<FundSourceResponse> {

@@ -1,4 +1,4 @@
-import { UpdateFundRequestRequest, ConfirmFundRequestRequest } from './../models/FundRequest';
+import { UpdateFundRequestRequest, ConfirmFundRequestRequest } from '../models/FundRequest';
 import { FundRequestResponse, FundRequest, PaginationParams, NewFundRequestRequest } from '../models';
 import { Client, Config } from '../Client';
 

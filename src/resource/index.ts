@@ -17,7 +17,7 @@ import { TokenResource } from './TokenResource';
 import { SourceResource } from './SourceResource';
 import { SearchResource } from './SearchResource';
 import { TransactionResource } from './TransactionResource';
-import { FundRequestResource } from './FundRequest';
+import { FundRequestResource } from './FundRequestResource';
 import { FundSourceResource } from './FundSourceResource';
 import { FundAccountResource } from './FundAccountResource';
 

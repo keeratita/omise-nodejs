@@ -24,7 +24,6 @@ export type FundSourceListResponse = FundSourceList | OmiseError;
 
 export interface NewFundSourceRequest {
   type: FundSourceType;
-  fund_account: string;
   national_id: string;
   card_last_digits: string;
   phone_number: string;
