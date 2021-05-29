@@ -4,6 +4,8 @@ import { OmiseError } from './models/Error';
 import FormData from 'form-data';
 import qs from 'qs';
 
+const VERSION = '0.0.3';
+
 export interface Config {
   omiseVersion?: '2019-05-29'; // only supports API version 2019-05-29 for now
   publicKey: string;
@@ -141,6 +143,7 @@ export abstract class Client {
     return {
       baseURL: this.baseURL,
       headers: {
+        'User-Agent': `omise-nodejs/${VERSION}`,
         'Omise-Version': options?.omiseVersion || this.config?.omiseVersion || '2019-05-29',
         ...options?.headers,
       },
