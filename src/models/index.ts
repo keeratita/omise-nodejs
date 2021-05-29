@@ -32,3 +32,4 @@ export * from './WebhookDelivery';
 //
 export * from './FundAccount';
 export * from './FundSource';
+export * from './FundRequest';

@@ -1,4 +1,3 @@
-import { FundAccountResource } from './FundAccountResource';
 import { TransferResource } from './TransferResource';
 import { ReceiptResource } from './ReceiptResource';
 import { OccurrenceResource } from './OccurrenceResource';
@@ -18,6 +17,9 @@ import { TokenResource } from './TokenResource';
 import { SourceResource } from './SourceResource';
 import { SearchResource } from './SearchResource';
 import { TransactionResource } from './TransactionResource';
+import { FundRequestResource } from './FundRequest';
+import { FundSourceResource } from './FundSourceResource';
+import { FundAccountResource } from './FundAccountResource';
 
 export class OmiseClient {
   account: AccountResource;
@@ -39,8 +41,10 @@ export class OmiseClient {
   transfer: TransferResource;
   transaction: TransactionResource;
   fundAccount: FundAccountResource;
+  fundSource: FundSourceResource;
+  fundRequest: FundRequestResource;
 
-  constructor(config: Config) {
+  constructor(private config: Config) {
     this.account = new AccountResource(config);
     this.balance = new BalanceResource(config);
     this.capability = new CapabilityResource(config);
@@ -60,5 +64,7 @@ export class OmiseClient {
     this.transfer = new TransferResource(config);
     this.transaction = new TransactionResource(config);
     this.fundAccount = new FundAccountResource(config);
+    this.fundSource = new FundSourceResource(config);
+    this.fundRequest = new FundRequestResource(config);
   }
 }
