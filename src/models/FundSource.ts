@@ -8,6 +8,7 @@ export interface FundSource {
   object: 'fund_source';
   livemode: boolean;
   location: string;
+  id: string;
   created_at: string;
   type: FundSourceType;
   status: FundSourceStatus;

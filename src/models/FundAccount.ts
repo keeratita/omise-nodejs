@@ -5,6 +5,7 @@ export interface FundAccount {
   object: 'fund_account';
   livemode: boolean;
   location: string;
+  id: string;
   deleted: boolean;
   client_reference_id: string;
   description?: string;

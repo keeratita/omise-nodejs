@@ -5,13 +5,14 @@ export interface FundRequest {
   object: 'fund_request';
   livemode: boolean;
   location: string;
+  id: string;
   created_at: string;
-  fund_source: string;
+  fund_source?: string;
   amount: number;
   status: string;
   description?: string;
-  failure_code: string;
-  failure_message: string;
+  failure_code?: string;
+  failure_message?: string;
 }
 
 export interface FundRequestList extends List<FundRequest> {}
