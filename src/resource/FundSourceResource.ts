@@ -9,7 +9,7 @@ import { Client, Config } from '../Client';
 
 export class FundSourceResource extends Client {
   protected get baseURL() {
-    return `${this.apiBaseUrl}/fund_accounts`;
+    return `${this.apiBaseUrl}/fund_sources`;
   }
 
   constructor(config: Config) {

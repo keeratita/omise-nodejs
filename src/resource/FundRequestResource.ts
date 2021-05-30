@@ -4,7 +4,7 @@ import { Client, Config } from '../Client';
 
 export class FundRequestResource extends Client {
   protected get baseURL() {
-    return `${this.apiBaseUrl}/fund_accounts`;
+    return `${this.apiBaseUrl}/fund_requests`;
   }
 
   constructor(config: Config) {
