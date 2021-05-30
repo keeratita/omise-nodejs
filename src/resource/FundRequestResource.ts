@@ -36,7 +36,7 @@ export class FundRequestResource extends Client {
   }
 
   async confirm(id: string, data: ConfirmFundRequestRequest): Promise<FundRequestResponse> {
-    return this.patch<FundRequest>(`${id}/confirm`, data, this.config.publicKey);
+    return this.post<FundRequest>(`${id}/confirm`, data, this.config.publicKey);
   }
 
   async resentConfirmation(id: string): Promise<FundRequestResponse> {

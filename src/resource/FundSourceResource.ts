@@ -41,10 +41,10 @@ export class FundSourceResource extends Client {
   }
 
   async confirm(id: string, data: ConfirmFundSourceRequest): Promise<FundSourceResponse> {
-    return this.patch<FundSource>(`${id}/confirm`, data, this.config.publicKey);
+    return this.post<FundSource>(`${id}/confirm`, data, this.config.publicKey);
   }
 
   async resentConfirmation(id: string, data: ResentConfirmationFundSourceRequest): Promise<FundSourceResponse> {
-    return this.patch<FundSource>(`${id}/resend_confirmation`, data);
+    return this.post<FundSource>(`${id}/resend_confirmation`, data);
   }
 }
