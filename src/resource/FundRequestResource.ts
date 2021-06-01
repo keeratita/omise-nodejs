@@ -40,6 +40,6 @@ export class FundRequestResource extends Client {
   }
 
   async resentConfirmation(id: string): Promise<FundRequestResponse> {
-    return this.post<FundRequest>(`${id}/resend_confirmation`);
+    return this.post<FundRequest>(`${id}/resend_confirmation_code`);
   }
 }

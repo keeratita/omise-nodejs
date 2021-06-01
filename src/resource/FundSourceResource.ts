@@ -45,6 +45,6 @@ export class FundSourceResource extends Client {
   }
 
   async resentConfirmation(id: string, data: ResentConfirmationFundSourceRequest): Promise<FundSourceResponse> {
-    return this.post<FundSource>(`${id}/resend_confirmation`, data);
+    return this.post<FundSource>(`${id}/resend_confirmation_code`, data);
   }
 }
