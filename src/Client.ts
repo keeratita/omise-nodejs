@@ -4,7 +4,7 @@ import { OmiseError } from './models/Error';
 import FormData from 'form-data';
 import qs from 'qs';
 
-const VERSION = '0.0.8';
+const VERSION = '0.0.9';
 
 export interface Config {
   omiseVersion?: '2019-05-29'; // only supports API version 2019-05-29 for now
