@@ -7,7 +7,7 @@ export interface FundAccount {
   location: string;
   id: string;
   deleted: boolean;
-  client_reference_id: string;
+  reference_id: string;
   description?: string;
   created_at: string;
 }
