@@ -1,7 +1,7 @@
 import { OmiseError } from './Error';
 import { List } from './common';
 
-export type FundSourceStatus = 'unverified' | 'verified' | 'deactivated' | 'canceled';
+export type FundSourceStatus = 'unverified' | 'verified' | 'deactivated' | 'cancelled';
 export type FundSourceType = 'citi_rc';
 
 export interface FundSource {

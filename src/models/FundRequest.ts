@@ -9,10 +9,11 @@ export interface FundRequest {
   created_at: string;
   fund_source?: string;
   amount: number;
-  status: string;
+  status: 'verified' | 'unverified';
   description?: string;
   failure_code?: string;
   failure_message?: string;
+  transaction_reference: string;
 }
 
 export interface FundRequestList extends List<FundRequest> {}
