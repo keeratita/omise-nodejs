@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { AxiosRequestConfig, AxiosResponse, AxiosPromise } from 'axios';
+import { AxiosRequestConfig, AxiosPromise } from 'axios';
 import { OmiseError } from './models/Error';
 import FormData from 'form-data';
 import qs from 'qs';
