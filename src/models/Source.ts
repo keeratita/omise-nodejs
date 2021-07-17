@@ -50,6 +50,7 @@ export type SourceType =
   | 'qr_code_upi'
   | 'truemoney'
   | 'rabbit_linepay'
+  | 'fpx'
   | InstallmentType
   | InternetBankingType;
 
@@ -135,4 +136,11 @@ export interface NewTruemoneySourceRequest extends NewSourceRequest {
   type: 'truemoney';
   currency: 'THB';
   phone_number: string;
+}
+
+// Document: https://www.omise.co/fpx
+export interface NewFpxSourceRequest extends NewSourceRequest {
+  type: 'fpx';
+  currency: 'MYR';
+  bank: string;
 }
